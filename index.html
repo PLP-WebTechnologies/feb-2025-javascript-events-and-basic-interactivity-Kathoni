@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Interactive Playground</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header>
+        <h1 style="
+    font-family: 'Courier New', monospace;
+    color: #dfdbd3;
+    text-align: center;
+    padding: 20px;
+    margin: 30px auto;
+    max-width: 80%;
+    background: #111;
+    border: 3px solid #553a11;
+    border-radius: 5px;
+    box-shadow: 0 0 15px #e0b965, 
+                inset 0 0 10px rgba(238, 143, 18, 0.3);
+    text-shadow: 0 0 5px #d3760d;
+    position: relative;
+    overflow: hidden;
+    animation: 
+        typewriter 2s steps(20) 1s 1 normal both,
+        blinkTextCursor 500ms steps(20) infinite normal;
+">
+    <span style="display: inline-block;">🎪</span>
+    <span style="display: inline-block; animation: glitch 1s linear infinite;">JavaScript</span>
+    <span style="display: inline-block;">Interactive</span>
+    <span style="display: inline-block; animation: glitch 1s linear infinite reverse;">Playground</span>
+    <span style="display: inline-block;">🎪</span>
+    
+    <span style="
+        content: '';
+        position: absolute;
+        right: 10px;
+        bottom: 10px;
+        width: 10px;
+        height: 3px;
+        background: #9b6501;
+        animation: blink 0.5s infinite alternate;
+    "></span>
+</h1>
+
+<style>
+    @keyframes typewriter {
+        from { width: 0; }
+        to { width: 100%; }
+    }
+    
+    @keyframes blinkTextCursor {
+        from { border-right: 3px solid #b95e09; }
+        to { border-right: 3px solid transparent; }
+    }
+    
+    @keyframes glitch {
+        0% { transform: translate(0); }
+        20% { transform: translate(-2px, 2px); }
+        40% { transform: translate(-2px, -2px); }
+        60% { transform: translate(2px, 2px); }
+        80% { transform: translate(2px, -2px); }
+        100% { transform: translate(0); }
+    }
+    
+    @keyframes blink {
+        0% { opacity: 0.2; }
+        100% { opacity: 1; }
+    }
+</style>
+    </header>
+
+    <main>
+        <section id="event-handling" class="section">
+            <h2>🎈 Event Handling</h2>
+            
+            <div class="event-box">
+                <button id="click-button" class="interactive-button">Click Me!</button>
+                <p id="click-output">Button not clicked yet</p>
+            </div>
+            
+            <div class="event-box hover-box" id="hover-box">
+                <p>Hover over me!</p>
+                <p id="hover-output">Waiting for hover...</p>
+            </div>
+            
+            <div class="event-box">
+                <p>Type something:</p>
+                <input type="text" id="keypress-input" placeholder="Press any key...">
+                <p id="keypress-output">No keys pressed yet</p>
+            </div>
+            
+            <div class="event-box secret-container">
+                <button id="secret-button" class="interactive-button">Find the secret! (Try double-click or long press)</button>
+                <div id="secret-output">
+                    <p class="initial-message">🤫 Shhh... try different interactions to reveal anime secrets!</p>
+                    <div class="anime-secrets hidden">
+                        <div class="secret-card" data-secret="1">
+                            <img src="naruto.jpeg" alt="Naruto" class="anime-img">
+                            <p class="secret-text">"Believe it!" - Naruto Uzumaki</p>
+                            <button class="next-secret">Next Secret →</button>
+                        </div>
+                        <div class="secret-card" data-secret="2">
+                            <img src="soy yo goku.jpeg" alt="Goku" class="anime-img">
+                            <p class="secret-text">"It's over 9000!" - Vegeta</p>
+                            <button class="next-secret">Next Secret →</button>
+                        </div>
+                        <div class="secret-card" data-secret="3">
+                            <img src="luffy.jpeg" alt="Luffy" class="anime-img">
+                            <p class="secret-text">"I'm gonna be King of the Pirates!" - Monkey D. Luffy</p>
+                            <button class="next-secret">Next Secret →</button>
+                        </div>
+                        <div class="secret-card" data-secret="4">
+                            <img src="saitama.jpeg" alt="Saitama" class="anime-img">
+                            <p class="secret-text">"OK." - Saitama (One Punch Man)</p>
+                            <button class="next-secret">Next Secret →</button>
+                        </div>
+                    </div>
+                    <div class="secret-counter hidden">
+                        <p>Secrets found: <span id="secret-count">0</span>/4</p>
+                        <progress id="secret-progress" value="0" max="4"></progress>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="interactive-elements" class="section">
+            <h2>🎮 Interactive Elements</h2>
+            
+            <div class="interactive-box">
+                <button id="color-changer" class="interactive-button">Change My Color!</button>
+            </div>
+            
+            <div class="gallery-container">
+                <h3>Image Gallery</h3>
+                <div class="gallery">
+                    <img src="81a5748d-c126-4d64-928c-666b73d9e94d.jpeg" alt="Gallery image 1" class="gallery-img active">
+                    <img src="b9223df8-a305-49b3-9c05-e9fd672c458e.jpeg" alt="Gallery image 2" class="gallery-img">
+                    <img src="f3dbf88d-cd14-4438-bf1e-a731b4695e9d.jpeg" alt="Gallery image 3" class="gallery-img">
+                </div>
+                <div class="gallery-controls">
+                    <button id="prev-btn" class="gallery-btn">← Previous</button>
+                    <button id="next-btn" class="gallery-btn">Next →</button>
+                </div>
+            </div>
+            <div class="tabs-container">
+                <h3>Jujutsu Sorcerer Files</h3>
+                <div class="tabs">
+                    <button class="tab-btn active" data-tab="tab1">Gojo</button>
+                    <button class="tab-btn" data-tab="tab2">Yuji</button>
+                    <button class="tab-btn" data-tab="tab3">Sukuna</button>
+                </div>
+                <div class="tab-content active" id="tab1">
+                    <p>"Throughout Heaven and Earth, I alone am the honored one."</p>
+                    <div class="character-card">
+                        <img src="gojo.jpeg" alt="Gojo Satoru">
+                        <div>
+                            <h4>Satoru Gojo</h4>
+                            <p>Special Grade Jujutsu Sorcerer<br>
+                            Abilities: Limitless, Six Eyes<br>
+                            Status: The Strongest</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="tab-content" id="tab2">
+                    <p>"I'll keep killing curses until I've killed all the bad guys in the world!"</p>
+                    <div class="character-card">
+                        <img src="yuji.jpeg" alt="Yuji Itadori">
+                        <div>
+                            <h4>Yuji Itadori</h4>
+                            <p>Grade 1 Sorcerer (Potential)<br>
+                            Abilities: Superhuman Strength, Divergent Fist<br>
+                            Status: Sukuna's Vessel</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="tab-content" id="tab3">
+                    <p>"I'll kill you... in the most excruciating way possible."</p>
+                    <div class="character-card">
+                        <img src="X.jpeg" alt="Ryomen Sukuna">
+                        <div>
+                            <h4>Ryomen Sukuna</h4>
+                            <p>King of Curses<br>
+                            Abilities: Dismantle, Cleave, Domain Expansion<br>
+                            Status: 20 Fingers Reincarnated</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <script>
+                const tabBtns = document.querySelectorAll('.tab-btn');
+                
+                tabBtns.forEach(btn => {
+                    btn.addEventListener('click', () => {
+                        // Remove active class from all buttons and content
+                        document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+                        document.querySelectorAll('.tab-content').forEach(c => c.classList.remove('active'));
+                        
+                        // Add active class to clicked button
+                        btn.classList.add('active');
+                        
+                        // Show corresponding content
+                        const tabId = btn.getAttribute('data-tab');
+                        document.getElementById(tabId).classList.add('active');
+                    });
+                });
+            </script>
+          </section>
+
+        <section id="form-validation" class="section">
+            <h2>📋 Form Validation</h2>
+            
+            <form id="user-form" class="form">
+                <div class="form-group">
+                    <label for="name">Name (required):</label>
+                    <input type="text" id="name" name="name">
+                    <span class="error-message" id="name-error"></span>
+                </div>
+                
+                <div class="form-group">
+                    <label for="email">Email:</label>
+                    <input type="email" id="email" name="email">
+                    <span class="error-message" id="email-error"></span>
+                </div>
+                
+                <div class="form-group">
+                    <label for="password">Password (min 8 chars):</label>
+                    <input type="password" id="password" name="password">
+                    <span class="error-message" id="password-error"></span>
+                    <div class="password-strength">
+                        <span class="strength-bar"></span>
+                        <span class="strength-text">Password strength</span>
+                    </div>
+                </div>
+                
+                <button type="submit" class="interactive-button">Submit</button>
+            </form>
+            
+            <div id="form-success" class="success-message">
+                Form submitted successfully!
+            </div>
+        </section>
+    </main>
+
+    <script src="script.js"></script>
+</body>
+</html>
